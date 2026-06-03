@@ -1,14 +1,17 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cuenta Regresiva Mundial 2026</title>
+    
+    <!-- Iconos de Font Awesome para el logo de WhatsApp -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&q=80&w=1000') no-repeat center center fixed;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-            1574629810360-7efbbe195018?auto=format&fit=crop&q=80&w=1000') no-repeat center center fixed;
             background-size: cover;
             color: white;
             text-align: center;
@@ -27,8 +30,10 @@
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin: 20px 0;
+            margin: 20px auto;
             flex-wrap: wrap;
+            padding: 0 10px;
+            max-width: 95%;
         }
 
         .time-box {
@@ -78,11 +83,53 @@
 
         .brand { color: #ffd700; font-weight: bold; }
 
+        /* BOTÓN FLOTANTE DE WHATSAPP */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background-color: #25d366;
+            color: #fff;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #128c7e;
+            transform: scale(1.1);
+            color: #fff;
+        }
+
+        /* MEDIA QUERIES PARA MÓVILES */
         @media (max-width: 600px) {
             h1 { font-size: 1.6rem; }
             h2 { font-size: 1.1rem; }
             .time-box { min-width: 70px; padding: 10px; }
             .time-box span { font-size: 1.8rem; }
+            
+            /* Ajuste del botón para que no estorbe */
+            .whatsapp-btn {
+                width: 50px;
+                height: 50px;
+                bottom: 15px;
+                right: 15px;
+                font-size: 25px;
+            }
+            
+            /* Espacio extra al final para que el botón no tape el texto del footer */
+            footer {
+                padding-bottom: 80px;
+            }
         }
     </style>
 </head>
@@ -91,11 +138,11 @@
     <header>
         <h2>CUENTA REGRESIVA</h2>
         <h1>Copa Mundial de la FIFA 2026</h1>
-        <p>M&eacutexico * Estados Unidos * Canad&aacute</p>
+        <p>México * Estados Unidos * Canadá</p>
     </header>
 
     <div id="countdown">
-        <div class="time-box"><span id="days">00</span><div class="label">D&iacuteas</div></div>
+        <div class="time-box"><span id="days">00</span><div class="label">Días</div></div>
         <div class="time-box"><span id="hours">00</span><div class="label">Horas</div></div>
         <div class="time-box"><span id="minutes">00</span><div class="label">Min</div></div>
         <div class="time-box"><span id="seconds">00</span><div class="label">Seg</div></div>
@@ -104,8 +151,7 @@
     <!-- Sección del Video -->
     <div class="video-container">
         <div class="video-aspect-ratio">
-           <iframe width="560" height="315" src="https://www.youtube.com/embed/fcnDmrtj6Sk?si=MyviEUY2sNT0mHfr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/uHukhAz7SQw?si=Rve1T791AFeMzUm3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
 
     <footer>
@@ -113,29 +159,38 @@
         <p>Administrado por: <span class="brand">El Socio</span></p>
     </footer>
 
+    <!-- Botón de WhatsApp -->
+    <a href="https://wa.me/1234567890?text=Hola!%20Vengo%20desde%20la%20página%20del%20Mundial%202026" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <script>
-        const countdownDate = new Date("June 11, 2026 00:00:00").getTime();
+        document.addEventListener('DOMContentLoaded', () => {
+            const countdownDate = new Date("June 11, 2026 00:00:00").getTime();
 
-        const x = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = countdownDate - now;
+            const x = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = countdownDate - now;
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.getElementById("days").innerHTML = days;
-            document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
-            document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
-            document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+                // Actualizamos con padding para que siempre se vean 2 dígitos
+                document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+                document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+                document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+                document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
 
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("countdown").innerHTML = "<h3>¡HA COMENZADO EL SUEÑO MUNDIALISTA!</h3>";
-            }
-        }, 1000);
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("countdown").innerHTML = "<h3>¡HA COMENZADO EL SUEÑO MUNDIALISTA!</h3>";
+                }
+            }, 1000);
+        });
     </script>
 
 </body>
 </html>
+
